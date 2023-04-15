@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="index.css" rel="stylesheet">
+    <script defer src="./index.js"></script>
+    <title>Weather App</title>
+</head>
+<body class="root">
+    <main class="container">
+        <section class="search">
+            <img class="search__location-pic" src="./images/location-pin.svg" alt="location">
+            <input class="search__input" name="city" type="text" placeholder="Enter your location" required>
+            <button class="search__button" type="submit"><img class="search__btn-pic" src="./images/magnifying-glass.svg" alt="magnifying glass btn"></button>
+        </section>
+
+        <section class="forecast">
+            <div class="weather-box">
+                <img class="precipitation-img" src="./images/clear.png" alt="#">
+                <p class="temperature">24°C</p>
+                <p class="description">Clear</p>
+            </div>
+
+            <div class="details">
+                <div class="details__info">
+                    <img class="digits-ico" src="./images/water.svg" alt="">
+                    <p class="digits" id="humidity">88%</p>
+                    <p class="digits-description">Humidity</p>
+                </div>
+
+                <div class="details__info">
+                    <img class="digits-ico" src="./images/wind.svg" alt="">
+                    <p class="digits" id="wind-speed">0Km/h</p>
+                    <p class="digits-description">Wind Speed</p>
+                </div>
+            </div>
+
+            
+        </section>
+        <div class="error400">
+            <img class="precipitation-img" src="./images/404.png" alt="Invalid entry">
+            <p class="description">D'oh! Something went wrong</p>
+        </div>
+    </main>
+</body>
+</html>
