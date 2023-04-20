@@ -91,20 +91,34 @@
     transition: all ease 0.3s;
 }
 
-.precipitation-img {
+.forecast__place, .forecast__country {
+    position: relative;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 2px 0;
+}
+
+/* .forecast__country {} */
+
+.forecast__precipitation-img {
+    width: 64px;
+    align-self: center;
+    margin: 0 0 15px 0;
+}
+
+.forecast__error-img {
     width: 220px;
     align-self: center;
     margin: 0 0 15px 0;
 }
 
-.temperature {
+.forecast__temperature {
     font-size: 48px;
     line-height: 50px;
     font-weight: 900;
     margin: 0;
 }
 
-.description {
+.forecast__description {
     font-size: 32px;
     font-weight: 900;
     text-align: center;
@@ -119,7 +133,7 @@
     padding-top: 25px;
 }
 
-.details__info {
+.details__block {
     display: grid;
     grid-template-columns: 40px 95px;
     grid-template-rows: repeat(2, 20px);
@@ -131,17 +145,17 @@
     text-align: left;
 }
 
-.digits-ico {
+.details__ico {
     grid-column: 1;
     grid-row: 1 / span 2;
     width: 40px;
 }
 
-.digits {
+.details__digits {
     margin: 0;
 }
 
-.digits-description {
+.details__description {
     margin: 0;
 }
 

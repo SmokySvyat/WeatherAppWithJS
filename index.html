@@ -18,30 +18,46 @@
 
         <section class="forecast">
             <div class="weather-box">
-                <img class="precipitation-img" src="./images/clear.png" alt="#">
-                <p class="temperature">24°C</p>
-                <p class="description">Clear</p>
+                <p class="forecast__place"></p>
+                <p class="forecast__country"></p>
+                <img class="forecast__precipitation-img" src="./images/clear.png" alt="#">
+                <p class="forecast__temperature"><span class=""></span></p>
+                <p class="forecast__description"></p>
             </div>
 
             <div class="details">
-                <div class="details__info">
-                    <img class="digits-ico" src="./images/water.svg" alt="">
-                    <p class="digits" id="humidity">88%</p>
-                    <p class="digits-description">Humidity</p>
+                <div class="details__block">
+                    <img class="details__ico" src="./images/FeelsLike.svg" alt="">
+                    <p class="details__digits" id="feels-like"></p>
+                    <p class="details__description">Feels like</p>
                 </div>
 
-                <div class="details__info">
-                    <img class="digits-ico" src="./images/wind.svg" alt="">
-                    <p class="digits" id="wind-speed">0Km/h</p>
-                    <p class="digits-description">Wind Speed</p>
+                <div class="details__block">
+                    <img class="details__ico" src="./images/wind.svg" alt="">
+                    <p class="details__digits" id="wind-speed"></p>
+                    <p class="details__description">Wind Speed</p>
                 </div>
+
+                <div class="details__block">
+                    <img class="details__ico" src="./images/pressure.svg" alt="">
+                    <p class="details__digits" id="pressure"></p>
+                    <p class="details__description">Pressure</p>
+                </div>
+
+                <div class="details__block">
+                    <img class="details__ico" src="./images/humidity.svg" alt="">
+                    <p class="details__digits" id="humidity"></p>
+                    <p class="details__description">Humidity</p>
+                </div>
+
+
             </div>
 
             
         </section>
         <div class="error400">
-            <img class="precipitation-img" src="./images/404.png" alt="Invalid entry">
-            <p class="description">D'oh! Something went wrong</p>
+            <img class="forecast__error-img" src="./images/404.png" alt="Invalid entry">
+            <p class="forecast__description">D'oh! Something went wrong</p>
         </div>
     </main>
 </body>
