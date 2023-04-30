@@ -45,7 +45,7 @@
   content: "\e905";
 }
 
-@media screen and (max-width:340px) {
+@media screen and (max-width:373px) {
   .icon-magnifying-glass-location:before {
     font-size: 20px;
   }

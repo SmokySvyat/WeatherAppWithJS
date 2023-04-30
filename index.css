@@ -198,7 +198,7 @@
     display: flex;
 }
 
-@media screen and (max-width:340px) {
+@media screen and (max-width:373px) {
     .container {
         width: 310px;
         padding: 15px 10px;
