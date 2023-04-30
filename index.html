@@ -5,15 +5,21 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="index.css" rel="stylesheet">
+    <script defer src="https://api-maps.yandex.ru/2.0/?load=package.full&lang=ru-RU" type="text/javascript"></script>
     <script defer src="./index.js"></script>
     <title>Weather App</title>
 </head>
 <body class="root">
     <form name="forecast" class="container">
         <section class="search">
-            <span class="icon-location-dot"></span>
-            <input class="search__input" name="city" type="text" placeholder="Enter your location" required>
-            <button class="search__button icon-magnifying-glass-location" type="submit"></button>
+            <div class="search__field">
+                <span class="icon-location-dot"></span>
+                <input class="search__input" name="city" type="text" placeholder="Enter your location" required>
+                <button class="search__button icon-magnifying-glass-location" type="submit"></button>
+            </div>
+            <span class="search__me">or 
+                <button class="search__button" type="button">find me</button>
+            </span>
         </section>
 
         <section class="forecast">
@@ -27,28 +33,24 @@
 
             <div class="details">
                 <div class="details__block">
-                    <!-- <img class="details__ico" src="./images/FeelsLike.svg" alt=""> -->
                     <span class="details__ico icon-temp-feels-like"></span>
                     <p class="details__digits" id="feels-like"></p>
                     <p class="details__description">Feels like</p>
                 </div>
 
                 <div class="details__block">
-                    <!-- <img class="details__ico" src="./images/wind.svg" alt=""> -->
                     <span class="details__ico icon-wind"></span>
                     <p class="details__digits" id="wind-speed"></p>
                     <p class="details__description">Wind Speed</p>
                 </div>
 
                 <div class="details__block">
-                    <!-- <img class="details__ico" src="./images/pressure.svg" alt=""> -->
                     <span class="details__ico icon-pressure"></span>
                     <p class="details__digits" id="pressure"></p>
                     <p class="details__description">Pressure</p>
                 </div>
 
                 <div class="details__block">
-                    <!-- <img class="details__ico" src="./images/humidity.svg" alt=""> -->
                     <span class="details__ico icon-humidity"></span>
                     <p class="details__digits" id="humidity"></p>
                     <p class="details__description">Humidity</p>

@@ -44,3 +44,13 @@
 .icon-wind:before {
   content: "\e905";
 }
+
+@media screen and (max-width:325px) {
+  .icon-magnifying-glass-location:before {
+    font-size: 20px;
+  }
+
+  .icon-location-dot:before {
+    font-size: 20px;
+  }
+}

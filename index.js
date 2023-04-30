@@ -2,7 +2,8 @@ const searchInput = document.querySelector('.search__input');
 const searchButton = document.querySelector('.search__button');
 const forecastSection = document.querySelector('.forecast');
 const container = document.forms['forecast'];
-
+const searchMe = document.querySelector('.search__me')
+const searchMeBtn = searchMe.querySelector('.search__button');
 
 const place = document.querySelector('.forecast__place');
 const countryPlace = document.querySelector('.forecast__country');
@@ -20,9 +21,7 @@ const setLocation = ({name, country}) => {
     countryPlace.textContent = `${country}`
 };
 
-const setDigits = (current) => {
-    console.log(current)
-    
+const setDigits = (current) => {    
     temperature.textContent = `${current.temp_c}°C`;
     description.textContent = current.condition.text;
     pressure.textContent = `${current.pressure_mb} mB`;
@@ -59,6 +58,7 @@ const setIco = ({text, icon}) => {
 
 const hideError = () => {
     error400.classList.remove('error400_active');
+    searchMe.classList.add('search__me_hide')
     forecastSection.classList.add('container-fadeIn')
     forecastSection.classList.add('forecast_active');
 };
@@ -66,18 +66,17 @@ const hideError = () => {
 const showError = () => {
     forecastSection.classList.remove('forecast_active');
     error400.classList.add('error400_active');
+    searchMe.classList.remove('search__me_hide')
 };
             
-const getForecast = () => {
+const getForecast = (city) => {
         const APIKey = '665b2b0576d8479dba0134633231504';
-        const city = searchInput.value;
 
         if (city === '') { return }
                 
         fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${city}&aqi=no`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
                 setLocation(data.location)
                 setDigits(data.current)
                 setIco(data.current.condition)    
@@ -85,9 +84,17 @@ const getForecast = () => {
                 
         .catch((err) => {
             showError()
-            console.log(err.message)    
+            console.log(err.message)
         })
 };
 
-container.addEventListener('submit', (evt) => {evt.preventDefault();
-    getForecast()});
+container.addEventListener('submit', (evt) => {
+    evt.preventDefault();
+    let input = searchInput.value;
+    getForecast(input)
+});
+
+searchMeBtn.addEventListener('click', () => {
+    const data = ymaps.geolocation;
+    getForecast(data.city)
+});
