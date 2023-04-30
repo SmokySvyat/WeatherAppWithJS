@@ -18,17 +18,40 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
 
     padding: 30px;
     width: 370px;
-    max-height: 640px;
-
-    transition: 0.6s ease-out;
+    max-height: 462px;
+    
     background-color: #fff;
 
     border: 1px solid #000;
     border-radius: 25px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.7);
+}
+
+.container-fadeIn {
+    animation: fadeIn 0.6s ease;
+}
+.container-fadeOut {
+    animation: fadeOut 0.6s ease;
+}
+@keyframes fadeIn {
+    from {
+        height: 95px;
+    }
+    to {
+        height: 462px;
+    }
+}
+@keyframes fadeOut {
+    /* from {
+        height: fit-content;
+    } */
+    to {
+        height: 95px;
+    }
 }
 
 .search {
@@ -97,8 +120,6 @@
     margin: 2px 0;
 }
 
-/* .forecast__country {} */
-
 .forecast__precipitation-img {
     width: 64px;
     align-self: center;
@@ -149,6 +170,8 @@
     grid-column: 1;
     grid-row: 1 / span 2;
     width: 40px;
+
+    font-size: 32px;
 }
 
 .details__digits {

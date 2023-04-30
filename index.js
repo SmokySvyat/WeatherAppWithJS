@@ -1,6 +1,7 @@
 const searchInput = document.querySelector('.search__input');
 const searchButton = document.querySelector('.search__button');
 const forecastSection = document.querySelector('.forecast');
+const container = document.forms['forecast'];
 
 
 const place = document.querySelector('.forecast__place');
@@ -58,6 +59,7 @@ const setIco = ({text, icon}) => {
 
 const hideError = () => {
     error400.classList.remove('error400_active');
+    forecastSection.classList.add('container-fadeIn')
     forecastSection.classList.add('forecast_active');
 };
 
@@ -87,4 +89,5 @@ const getForecast = () => {
         })
 };
 
-searchButton.addEventListener('click', () => getForecast());
+container.addEventListener('submit', (evt) => {evt.preventDefault();
+    getForecast()});
