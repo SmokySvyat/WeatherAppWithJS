@@ -16,85 +16,91 @@ const weatherIco = document.querySelector('.forecast__precipitation-img');
 const feelsLike = document.querySelector('#feels-like')
 const error400 = document.querySelector('.error400');
 
-const setLocation = ({name, country}) => {
-    place.textContent = `${name}`
-    countryPlace.textContent = `${country}`
-};
-
-const setDigits = (current) => {    
-    temperature.textContent = `${current.temp_c}°C`;
-    description.textContent = current.condition.text;
-    pressure.textContent = `${current.pressure_mb} mB`;
-    humidity.textContent = `${current.humidity}%`;
-    windSpeed.textContent = `${current.wind_kph}Km/h`;
-    feelsLike.textContent = `${current.feelslike_c}°C`;
-
-    hideError()
-    
-};
-
-const setIco = ({text, icon}) => {
-    switch (text) {
-
-    case 'Clear':
-        weatherIco.src = './images/clear.png';
-        break;
-    case 'rain':
-        weatherIco.src = './images/rain.png';
-        break;
-    case 'mist':
-        weatherIco.src = './images/mist.png';
-        break;
-    case 'cloud':
-        weatherIco.src = './images/cloud.png';
-        break;
-    case 'snow':
-        weatherIco.src = './images/snow.png';
-        break;
-    default:
-        weatherIco.src = icon;
+class Forecast {
+    constructor() {
+        this._ApiKey = '665b2b0576d8479dba0134633231504';
     }
-};
 
-const hideError = () => {
-    error400.classList.remove('error400_active');
-    searchMe.classList.add('search__me_hide')
-    forecastSection.classList.add('container-fadeIn')
-    forecastSection.classList.add('forecast_active');
-};
+    _showError = () => {
+        forecastSection.classList.remove('forecast_active');
+        error400.classList.add('error400_active');
+        searchMe.classList.remove('search__me_hide')
+    };
 
-const showError = () => {
-    forecastSection.classList.remove('forecast_active');
-    error400.classList.add('error400_active');
-    searchMe.classList.remove('search__me_hide')
-};
-            
-const getForecast = (city) => {
-        const APIKey = '665b2b0576d8479dba0134633231504';
+    _hideError = () => {
+        error400.classList.remove('error400_active');
+        searchMe.classList.add('search__me_hide')
+        forecastSection.classList.add('container-fadeIn')
+        forecastSection.classList.add('forecast_active');
+    };
 
+    _setLocation = ({name, country}) => {
+        place.textContent = `${name}`
+        countryPlace.textContent = `${country}`
+    };
+
+    _setDigits = (current) => {    
+        temperature.textContent = `${current.temp_c}°C`;
+        description.textContent = current.condition.text;
+        pressure.textContent = `${current.pressure_mb} mB`;
+        humidity.textContent = `${current.humidity}%`;
+        windSpeed.textContent = `${current.wind_kph}Km/h`;
+        feelsLike.textContent = `${current.feelslike_c}°C`;
+    
+        this._hideError()
+        
+    };
+
+    _setIco = ({text, icon}) => {
+        switch (text) {
+    
+        case 'Clear':
+            weatherIco.src = './images/clear.png';
+            break;
+        case 'rain':
+            weatherIco.src = './images/rain.png';
+            break;
+        case 'mist':
+            weatherIco.src = './images/mist.png';
+            break;
+        case 'cloud':
+            weatherIco.src = './images/cloud.png';
+            break;
+        case 'snow':
+            weatherIco.src = './images/snow.png';
+            break;
+        default:
+            weatherIco.src = icon;
+        }
+    };
+
+    getForecast(city) {
         if (city === '') { return }
                 
-        fetch(`https://api.weatherapi.com/v1/current.json?key=${APIKey}&q=${city}&aqi=no`)
+        fetch(`https://api.weatherapi.com/v1/current.json?key=${this._ApiKey}&q=${city}&aqi=no`)
             .then(res => res.json())
             .then(data => {
-                setLocation(data.location)
-                setDigits(data.current)
-                setIco(data.current.condition)    
+                this._setLocation(data.location)
+                this._setDigits(data.current)
+                this._setIco(data.current.condition)    
             })        
                 
         .catch((err) => {
-            showError()
+            this._showError()
             console.log(err.message)
         })
+    }
 };
+
+const api = new Forecast();
 
 container.addEventListener('submit', (evt) => {
     evt.preventDefault();
     let input = searchInput.value;
-    getForecast(input)
+    api.getForecast(input)
 });
 
 searchMeBtn.addEventListener('click', () => {
     const data = ymaps.geolocation;
-    getForecast(data.city)
+    api.getForecast(data.city)
 });
